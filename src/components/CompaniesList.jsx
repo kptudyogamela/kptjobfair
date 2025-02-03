@@ -1,12 +1,15 @@
-import React from "react";
+import axios from "axios";
 import { useState, useEffect } from "react";
 const CompaniesList = () => {
   const [jobData, setJobData] = useState([]);
 
   useEffect(() => {
-    fetch("https://your-backend-api.com/jobs") // Replace with your actual API URL
-      .then((response) => response.json())
-      .then((data) => setJobData(data))
+    axios
+      .get("https://kptjobfairbackend.onrender.com/api/companies")
+      .then((response) => {
+        console.log("Fetched Data:", response.data); // Print data in console
+        setJobData(response.data);
+      })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 

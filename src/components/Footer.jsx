@@ -1,5 +1,5 @@
 import logo2 from "./../assets/twologos.png";
-import img1 from "./../assets/KPT LOgo.jpg";
+import img1 from "./../assets/KPT LOGO.jpg";
 import { Link } from "react-router-dom";
 
 const Footer = () => {

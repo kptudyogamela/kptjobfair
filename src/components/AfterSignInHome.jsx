@@ -11,13 +11,19 @@ function AfterSignInHome() {
           className="px-4 py-2 bg-green-500 text-white rounded"
           onClick={() => navigate("/company-list")}
         >
-          Candidates Details
+          Company Details
         </button>
         <button
           className="px-4 py-2 bg-pink-500 text-white rounded"
           onClick={() => navigate("/candidate-list")}
         >
           Candidates Details
+        </button>
+        <button
+          className="px-4 py-2 bg-blue-500 text-white rounded"
+          onClick={() => navigate("/feedback")}
+        >
+          Feedback
         </button>
       </div>
     </div>

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 
 const CompanyRegistration = () => {
@@ -27,8 +28,17 @@ const CompanyRegistration = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Company Registration Data:", formData);
-    alert("Company Registered Successfully!");
+
+    axios
+      .post("https://kptjobfairbackend.onrender.com/api/companies", formData)
+      .then((response) => {
+        console.log("Response from backend:", response.data);
+        alert("Job details submitted successfully!");
+      })
+      .catch((error) => {
+        console.error("Error submitting data:", error);
+        alert("Failed to submit job details.");
+      });
   };
 
   return (

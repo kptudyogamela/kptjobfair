@@ -1,18 +1,23 @@
+import axios from "axios";
 import { useState, useEffect } from "react";
 
 const CandidateList = () => {
   const [candidates, setCandidates] = useState([]);
-
   useEffect(() => {
-    fetch("https://your-backend-api.com/candidates") // Replace with your actual API URL
-      .then((response) => response.json())
-      .then((data) => setCandidates(data))
+    axios
+      .get("https://kptjobfairbackend.onrender.com/api/candidates")
+      .then((response) => {
+        console.log("Fetched Data:", response.data); // Print data in console
+        setCandidates(response.data);
+      })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
   return (
     <div className="max-w-full mx-auto p-6">
-      <h2 className="text-2xl font-bold text-gray-700 mb-4">Candidate List</h2>
+      <h2 className="text-2xl font-bold text-center text-pink-600 mb-4">
+        List of Candidates Registered
+      </h2>
       <div className="overflow-x-auto">
         <table className="w-full border-collapse border border-gray-300 shadow-md">
           <thead>

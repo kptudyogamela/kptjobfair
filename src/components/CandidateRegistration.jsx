@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -74,8 +75,16 @@ const CandidateRegistration = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Candidate Registration Data:", formData);
-    alert("Candidate Registered Successfully!");
+    axios
+      .post("https://kptjobfairbackend.onrender.com/api/candidates", formData)
+      .then((response) => {
+        console.log("Response from backend:", response.data);
+        alert("Candidate details submitted successfully!");
+      })
+      .catch((error) => {
+        console.error("Error submitting data:", error);
+        alert("Failed to submit Candidate details.");
+      });
   };
 
   const validateStep = (currentStep) => {
