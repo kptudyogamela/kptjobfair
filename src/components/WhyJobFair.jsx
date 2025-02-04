@@ -1,5 +1,9 @@
+import { useEffect } from "react";
 import img1 from "./../assets/whyjobfair.png";
 const WhyJobFair = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   return (
     <div>
       <section className="text-gray-600 body-font">

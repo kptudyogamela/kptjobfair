@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const CandidateRegistration = () => {
@@ -59,16 +59,19 @@ const CandidateRegistration = () => {
     otherLanguages: [],
     otherIndustryAspiration: [],
 
-    relocation: "",
+    relocation: "No",
     relocationDetails: "",
-    higherStudies: "",
-    experience: "",
+    higherStudies: "No",
+    experience: "No",
     experienceyears: "",
-    shiftWork: "",
-    passport: "",
-    drivingLicense: "",
+    shiftWork: "No",
+    passport: "No",
+    drivingLicense: "No",
   });
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -185,7 +188,7 @@ const CandidateRegistration = () => {
                 onClick={() => setStep(1)}
               >
                 <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <path d="M13 3L4 14h7l-2 7 10-12h-7z"></path>
                 </svg>
                 New Registration
               </button>
@@ -260,6 +263,7 @@ const CandidateRegistration = () => {
                   <div className="mb-4">
                     <label className="block text-gray-700 font-semibold">
                       College/Institute Name
+                      <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -275,23 +279,141 @@ const CandidateRegistration = () => {
                   {/* University/Board */}
                   <div className="mb-4">
                     <label className="block text-gray-700 font-semibold">
-                      University/Board
+                      University/Board<span className="text-red-500">*</span>
                     </label>
-                    <input
-                      type="text"
-                      name="universityBoard"
+                    <select
+                      name="gender"
                       value={formData.universityBoard}
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                      placeholder="Enter University/Board"
-                    />
+                    >
+                      <option value="">Select a University</option>
+                      <option value="Akkamahadevi Women's University">
+                        Akkamahadevi Women's University
+                      </option>
+                      <option value="Azim Premji University">
+                        Azim Premji University
+                      </option>
+                      <option value="Bangalore University">
+                        Bangalore University
+                      </option>
+                      <option value="Central University of Karnataka">
+                        Central University of Karnataka
+                      </option>
+                      <option value="CMR University">CMR University</option>
+                      <option value="Davangere University">
+                        Davangere University
+                      </option>
+                      <option value="Dayananda Sagar University">
+                        Dayananda Sagar University
+                      </option>
+                      <option value="Garden City University">
+                        Garden City University
+                      </option>
+                      <option value="GITAM University Bengaluru">
+                        GITAM University Bengaluru
+                      </option>
+                      <option value="Gulbarga University">
+                        Gulbarga University
+                      </option>
+                      <option value="Indian Institute of Science (IISc)">
+                        Indian Institute of Science (IISc)
+                      </option>
+                      <option value="Indian Institute of Management Bangalore (IIMB)">
+                        Indian Institute of Management Bangalore (IIMB)
+                      </option>
+                      <option value="Indian Institute of Technology Dharwad (IIT Dharwad)">
+                        Indian Institute of Technology Dharwad (IIT Dharwad)
+                      </option>
+                      <option value="International Institute of Information Technology Bangalore (IIIT-B)">
+                        International Institute of Information Technology
+                        Bangalore (IIIT-B)
+                      </option>
+                      <option value="Jain University">Jain University</option>
+                      <option value="JSS Academy of Higher Education & Research">
+                        JSS Academy of Higher Education & Research
+                      </option>
+                      <option value="Karnataka State Dr. Gangubai Hangal Music and Performing Arts University">
+                        Karnataka State Dr. Gangubai Hangal Music and Performing
+                        Arts University
+                      </option>
+                      <option value="Karnataka State Law University">
+                        Karnataka State Law University
+                      </option>
+                      <option value="Karnataka State Open University (KSOU)">
+                        Karnataka State Open University (KSOU)
+                      </option>
+                      <option value="Karnataka State Rural Development and Panchayat Raj University">
+                        Karnataka State Rural Development and Panchayat Raj
+                        University
+                      </option>
+                      <option value="Karnataka State Women's University">
+                        Karnataka State Womens University
+                      </option>
+                      <option value="Karnataka University Dharwad">
+                        Karnataka University Dharwad
+                      </option>
+                      <option value="KLE Technological University">
+                        KLE Technological University
+                      </option>
+                      <option value="Kuvempu University">
+                        Kuvempu University
+                      </option>
+                      <option value="Manipal Academy of Higher Education">
+                        Manipal Academy of Higher Education
+                      </option>
+                      <option value="Mangalore University">
+                        Mangalore University
+                      </option>
+                      <option value="National Institute of Fashion Technology (NIFT) Bengaluru">
+                        National Institute of Fashion Technology (NIFT)
+                        Bengaluru
+                      </option>
+                      <option value="National Institute of Technology Karnataka (NITK) Surathkal">
+                        National Institute of Technology Karnataka (NITK)
+                        Surathkal
+                      </option>
+                      <option value="Nitte University">Nitte University</option>
+                      <option value="PES University">PES University</option>
+                      <option value="Presidency University">
+                        Presidency University
+                      </option>
+                      <option value="Rani Channamma University">
+                        Rani Channamma University
+                      </option>
+                      <option value="REVA University">REVA University</option>
+                      <option value="RV University">RV University</option>
+                      <option value="Sri Devraj Urs Academy of Higher Education and Research">
+                        Sri Devraj Urs Academy of Higher Education and Research
+                      </option>
+                      <option value="Sri Siddhartha Academy of Higher Education">
+                        Sri Siddhartha Academy of Higher Education
+                      </option>
+                      <option value="Tumkur University">
+                        Tumkur University
+                      </option>
+                      <option value="University of Agricultural Sciences Bangalore">
+                        University of Agricultural Sciences Bangalore
+                      </option>
+                      <option value="University of Mysore">
+                        University of Mysore
+                      </option>
+                      <option value="Vijayanagara Sri Krishnadevaraya University">
+                        Vijayanagara Sri Krishnadevaraya University
+                      </option>
+                      <option value="Visvesvaraya Technological University (VTU)">
+                        Visvesvaraya Technological University (VTU)
+                      </option>{" "}
+                      <option value="Others">Others</option>
+                    </select>
                   </div>
 
                   {/* College/Institute Location */}
                   <div className="mb-4">
                     <label className="block text-gray-700 font-semibold">
                       College/Institute Location
+                      <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -313,7 +435,7 @@ const CandidateRegistration = () => {
 
                   <div className="mb-4">
                     <label className="block text-gray-700 font-semibold">
-                      Full Name
+                      Full Name<span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -328,7 +450,7 @@ const CandidateRegistration = () => {
 
                   <div className="mb-4">
                     <label className="block text-gray-700 font-semibold">
-                      Gender
+                      Gender<span className="text-red-500">*</span>
                     </label>
                     <select
                       name="gender"
@@ -346,7 +468,49 @@ const CandidateRegistration = () => {
 
                   <div className="mb-4">
                     <label className="block text-gray-700 font-semibold">
-                      Mobile No.
+                      Date of Birth<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="date"
+                      name="dateOfBirth"
+                      value={formData.dateOfBirth}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-gray-700 font-semibold">
+                      Email<span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                      placeholder="Enter email"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-gray-700 font-semibold">
+                      Country Code
+                    </label>
+                    <input
+                      type="text"
+                      name="countryCode"
+                      value="+91"
+                      readOnly
+                      className="w-full px-4 py-2 mt-2 border rounded-md bg-gray-100 cursor-not-allowed focus:outline-none"
+                    />
+                  </div>
+
+                  <div className="mb-4">
+                    <label className="block text-gray-700 font-semibold">
+                      Mobile No.<span className="text-red-500">*</span>
                     </label>
                     <input
                       type="tel"
@@ -375,36 +539,22 @@ const CandidateRegistration = () => {
 
                   <div className="mb-4">
                     <label className="block text-gray-700 font-semibold">
-                      State
+                      Hometown/City/Village
+                      <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
-                      name="state"
-                      value={formData.state}
+                      name="hometown"
+                      value={formData.hometown}
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                      placeholder="Enter state"
+                      placeholder="Enter hometown/city/village"
                     />
                   </div>
-
                   <div className="mb-4">
                     <label className="block text-gray-700 font-semibold">
-                      Phone No.
-                    </label>
-                    <input
-                      type="tel"
-                      name="phoneNo"
-                      value={formData.phoneNo}
-                      onChange={handleChange}
-                      className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                      placeholder="Enter phone number"
-                    />
-                  </div>
-
-                  <div className="mb-4">
-                    <label className="block text-gray-700 font-semibold">
-                      District
+                      District<span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -419,51 +569,67 @@ const CandidateRegistration = () => {
 
                   <div className="mb-4">
                     <label className="block text-gray-700 font-semibold">
-                      Email
+                      State<span className="text-red-500">*</span>
                     </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
+
+                    <select
+                      name="state"
+                      value={formData.state}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                      placeholder="Enter email"
-                    />
+                      className="w-full border border-gray-300 px-4 py-2 rounded-md"
+                    >
+                      <option value="">Select a State</option>
+                      <option value="Andhra Pradesh">Andhra Pradesh</option>
+                      <option value="Arunachal Pradesh">
+                        Arunachal Pradesh
+                      </option>
+                      <option value="Assam">Assam</option>
+                      <option value="Bihar">Bihar</option>
+                      <option value="Chhattisgarh">Chhattisgarh</option>
+                      <option value="Goa">Goa</option>
+                      <option value="Gujarat">Gujarat</option>
+                      <option value="Haryana">Haryana</option>
+                      <option value="Himachal Pradesh">Himachal Pradesh</option>
+                      <option value="Jharkhand">Jharkhand</option>
+                      <option value="Karnataka">Karnataka</option>
+                      <option value="Kerala">Kerala</option>
+                      <option value="Madhya Pradesh">Madhya Pradesh</option>
+                      <option value="Maharashtra">Maharashtra</option>
+                      <option value="Manipur">Manipur</option>
+                      <option value="Meghalaya">Meghalaya</option>
+                      <option value="Mizoram">Mizoram</option>
+                      <option value="Nagaland">Nagaland</option>
+                      <option value="Odisha">Odisha</option>
+                      <option value="Punjab">Punjab</option>
+                      <option value="Rajasthan">Rajasthan</option>
+                      <option value="Sikkim">Sikkim</option>
+                      <option value="Tamil Nadu">Tamil Nadu</option>
+                      <option value="Telangana">Telangana</option>
+                      <option value="Tripura">Tripura</option>
+                      <option value="Uttar Pradesh">Uttar Pradesh</option>
+                      <option value="Uttarakhand">Uttarakhand</option>
+                      <option value="West Bengal">West Bengal</option>
+                      <option value="Andaman & Nicobar (UT)">
+                        Andaman & Nicobar (UT)
+                      </option>
+                      <option value="Chandigarh (UT)">Chandigarh (UT)</option>
+                      <option value="Dadra & Nagar Haveli and Daman & Diu (UT)">
+                        Dadra & Nagar Haveli and Daman & Diu (UT)
+                      </option>
+                      <option value="Delhi (NCT)">Delhi (NCT)</option>
+                      <option value="Jammu & Kashmir (UT)">
+                        Jammu & Kashmir (UT)
+                      </option>
+                      <option value="Ladakh (UT)">Ladakh (UT)</option>
+                      <option value="Lakshadweep (UT)">Lakshadweep (UT)</option>
+                      <option value="Puducherry (UT)">Puducherry (UT)</option>
+                    </select>
                   </div>
 
                   <div className="mb-4">
                     <label className="block text-gray-700 font-semibold">
-                      Hometown/City/Village
-                    </label>
-                    <input
-                      type="text"
-                      name="hometown"
-                      value={formData.hometown}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                      placeholder="Enter hometown/city/village"
-                    />
-                  </div>
-
-                  <div className="mb-4">
-                    <label className="block text-gray-700 font-semibold">
-                      Date of Birth
-                    </label>
-                    <input
-                      type="date"
-                      name="dateOfBirth"
-                      value={formData.dateOfBirth}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                    />
-                  </div>
-
-                  <div className="mb-4">
-                    <label className="block text-gray-700 font-semibold">
-                      Permanent Address
+                      Permanent Address<span className="text-red-500">*</span>
                     </label>
                     <textarea
                       name="permanentAddress"
@@ -477,7 +643,7 @@ const CandidateRegistration = () => {
 
                   <div className="mb-4">
                     <label className="block text-gray-700 font-semibold">
-                      Pin Code
+                      Pin Code<span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
@@ -492,7 +658,7 @@ const CandidateRegistration = () => {
 
                   <div className="mb-4">
                     <label className="block text-gray-700 font-semibold">
-                      Family Income
+                      Family Income<span className="text-red-500">*</span>
                     </label>
                     <input
                       type="number"
@@ -513,29 +679,31 @@ const CandidateRegistration = () => {
                     Academic Details
                   </h2>
 
-                  <div className="overflow-x-auto">
-                    <table className="w-full border-collapse border border-gray-300">
+                  <div className="w-full overflow-scroll">
+                    {/* <div className="w-full overflow-x-auto"> */}
+                    {/* <div className="max-w-full overflow-scroll"> */}
+                    <table className="min-w-full border-collapse border border-gray-300 text-sm sm:text-base">
                       <thead className="bg-gray-100">
                         <tr>
-                          <th className="border border-gray-300 px-4 py-2">
+                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
                             Qualification
                           </th>
-                          <th className="border border-gray-300 px-4 py-2">
+                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
                             Course
                           </th>
-                          <th className="border border-gray-300 px-4 py-2">
+                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
                             Stream
                           </th>
-                          <th className="border border-gray-300 px-4 py-2">
+                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
                             Specialization
                           </th>
-                          <th className="border border-gray-300 px-4 py-2">
+                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
                             Mode of Education
                           </th>
-                          <th className="border border-gray-300 px-4 py-2">
+                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
                             Year of Passing
                           </th>
-                          <th className="border border-gray-300 px-4 py-2">
+                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
                             % of Marks
                           </th>
                         </tr>
@@ -1046,7 +1214,7 @@ const CandidateRegistration = () => {
                     <label className="block text-pink-600 font-semibold mb-2">
                       Technical Skills:
                     </label>
-                    <div className="grid grid-cols-4 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                       {[
                         "C",
                         "C++",
@@ -1095,7 +1263,7 @@ const CandidateRegistration = () => {
                     <label className="block text-pink-600 font-semibold mb-2">
                       Languages Known:
                     </label>
-                    <div className="grid grid-cols-4 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                       {[
                         "English",
                         "Kannada",
@@ -1134,7 +1302,7 @@ const CandidateRegistration = () => {
                     <label className="block text-pink-600 font-semibold mb-2">
                       Industry Aspiration:
                     </label>
-                    <div className="grid grid-cols-4 gap-4">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                       {[
                         "Automobile",
                         "Banking and Financial Services",
@@ -1186,7 +1354,7 @@ const CandidateRegistration = () => {
                   </h2>
                   <div className="mb-4">
                     <label className="block text-gray-700 font-semibold">
-                      Relocation
+                      Relocation<span className="text-red-500">*</span>
                     </label>
                     <select
                       name="relocation"
@@ -1206,6 +1374,7 @@ const CandidateRegistration = () => {
                     <div className="mb-4">
                       <label className="block text-gray-700 font-semibold">
                         Relocation Details
+                        <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="text"
@@ -1222,7 +1391,7 @@ const CandidateRegistration = () => {
                   {/* Higher Studies */}
                   <div className="mb-4">
                     <label className="block text-gray-700 font-semibold">
-                      Higher Studies
+                      Higher Studies<span className="text-red-500">*</span>
                     </label>
                     <select
                       name="higherStudies"
@@ -1241,7 +1410,7 @@ const CandidateRegistration = () => {
 
                   <div className="mb-4">
                     <label className="block text-gray-700 font-semibold">
-                      Experience
+                      Experience<span className="text-red-500">*</span>
                     </label>
                     <select
                       name="experience"
@@ -1259,7 +1428,7 @@ const CandidateRegistration = () => {
                   {formData.experience === "Yes" && (
                     <div className="mb-4">
                       <label className="block text-gray-700 font-semibold">
-                        Experience years
+                        Experience years<span className="text-red-500">*</span>
                       </label>
                       <input
                         type="text"
@@ -1278,6 +1447,7 @@ const CandidateRegistration = () => {
                     <div className="mb-2">
                       <label className="block text-gray-700 font-semibold">
                         Are you ready to work in shift?
+                        <span className="text-red-500">*</span>
                       </label>
                       <select
                         name="shiftWork"
@@ -1296,6 +1466,7 @@ const CandidateRegistration = () => {
                     <div className="mb-2">
                       <label className="block text-gray-700 font-semibold">
                         Do you have a valid passport?
+                        <span className="text-red-500">*</span>
                       </label>
                       <select
                         name="passport"
@@ -1314,6 +1485,7 @@ const CandidateRegistration = () => {
                     <div className="mb-2">
                       <label className="block text-gray-700 font-semibold">
                         Do you have a valid driving license?
+                        <span className="text-red-500">*</span>
                       </label>
                       <select
                         name="drivingLicense"

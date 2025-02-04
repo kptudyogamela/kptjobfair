@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import img1 from "./../assets/herosection1.jpg";
 import Ourteam from "./Ourteam";
+import { useEffect } from "react";
 const About = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   return (
     <div className="text-gray-900">
       <div className="container mx-auto px-6 py-10">
@@ -38,7 +42,7 @@ const About = () => {
             </p>
             <div className="mt-5">
               <Link
-                to="/registration"
+                to="/candidate-registration"
                 className="bg-pink-500 text-white px-6 py-3 rounded-full text-lg shadow-lg hover:bg-pink-600 transition duration-300"
               >
                 Register Now 🚀

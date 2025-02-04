@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const CompanyRegistration = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +22,8 @@ const CompanyRegistration = () => {
     stream: "",
   });
 
+  const [loading, setLoading] = useState(false); // Track submission loading state
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -29,20 +31,40 @@ const CompanyRegistration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setLoading(true); // Show loading animation when submitting
+
     axios
       .post("https://kptjobfairbackend.onrender.com/api/companies", formData)
       .then((response) => {
         console.log("Response from backend:", response.data);
         alert("Job details submitted successfully!");
+        setLoading(false); // Stop loading animation
       })
       .catch((error) => {
         console.error("Error submitting data:", error);
         alert("Failed to submit job details.");
+        setLoading(false); // Stop loading animation on error
       });
   };
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      {loading && (
+        <div className="absolute inset-0 bg-gray-100 bg-opacity-50 flex justify-center items-center z-10">
+          {/* Spinner Animation */}
+          <div className="flex flex-col justify-center items-center">
+            <div className="animate-spin rounded-full h-24 w-24 border-t-4 border-pink-500 border-solid mb-4"></div>
+            <div className="text-black text-2xl font-semibold">
+              Please wait, submitting your data...
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="bg-white shadow-lg rounded-lg p-8 w-[90vw]">
         <h2 className="text-2xl font-bold text-pink-600 text-center mb-6">
           Company Registration
@@ -215,7 +237,7 @@ const CompanyRegistration = () => {
             </div>
             <div className="w-full">
               <label className="block text-gray-700 font-semibold">
-                To CTC
+                To CTC<span className="text-red-500">*</span>
               </label>
               <input
                 type="number"
@@ -233,28 +255,26 @@ const CompanyRegistration = () => {
           <div className="flex space-x-4">
             <div className="w-full">
               <label className="block text-gray-700 font-semibold">
-                From Experience<span className="text-red-500">*</span>
+                From Experience (in years)
               </label>
               <input
                 type="number"
                 name="fromExperience"
                 value={formData.fromExperience}
                 onChange={handleChange}
-                required
                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
                 placeholder="From Experience"
               />
             </div>
             <div className="w-full">
               <label className="block text-gray-700 font-semibold">
-                To Experience
+                To Experience (in years)
               </label>
               <input
                 type="number"
                 name="toExperience"
                 value={formData.toExperience}
                 onChange={handleChange}
-                required
                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
                 placeholder="To Experience"
               />
@@ -264,7 +284,7 @@ const CompanyRegistration = () => {
           {/* Designation */}
           <div>
             <label className="block text-gray-700 font-semibold">
-              Designationation Offered<span className="text-red-500">*</span>
+              Designation Offered<span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -280,7 +300,7 @@ const CompanyRegistration = () => {
           {/* Qualification */}
           <div>
             <label className="block text-gray-700 font-semibold">
-              Qualification of a Candidate
+              Qualification Required<span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -289,13 +309,15 @@ const CompanyRegistration = () => {
               onChange={handleChange}
               required
               className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-              placeholder="Enter required qualification"
+              placeholder="Enter qualification"
             />
           </div>
 
           {/* Course */}
           <div>
-            <label className="block text-gray-700 font-semibold">Course</label>
+            <label className="block text-gray-700 font-semibold">
+              Courses Eligible<span className="text-red-500">*</span>
+            </label>
             <input
               type="text"
               name="course"
@@ -303,31 +325,16 @@ const CompanyRegistration = () => {
               onChange={handleChange}
               required
               className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-              placeholder="Enter relevant course"
+              placeholder="Enter eligible courses"
             />
           </div>
 
-          {/* Stream */}
-          <div>
-            <label className="block text-gray-700 font-semibold">Stream</label>
-            <input
-              type="text"
-              name="stream"
-              value={formData.stream}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-              placeholder="Enter relevant stream"
-            />
-          </div>
-
-          {/* Submit Button */}
-          <div className="text-center">
+          <div className="flex justify-center">
             <button
               type="submit"
-              className="w-full bg-pink-600 text-white py-2 px-4 rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-400"
+              className="bg-pink-600 hover:bg-pink-700 text-white py-2 px-6 rounded-full w-full mt-4"
             >
-              Register Company
+              {loading ? "Submitting..." : "Register Company"}
             </button>
           </div>
         </form>

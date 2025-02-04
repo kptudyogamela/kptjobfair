@@ -37,11 +37,11 @@ const Footer = () => {
             </a>
           </div>
           <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
-            <div className="lg:w-1/4 md:w-1/2 w-full px-4">
+            <div className="hidden md:block lg:w-1/4 md:w-1/2 w-full px-4">
               <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
                 QUICK LINKS
               </h2>
-              <div className="bg-pink-100 h-1 w-full rounded-full mb-4"></div>{" "}
+              <div className="bg-pink-100 h-1 w-full rounded-full mb-4"></div>
               <nav className="list-none mb-10">
                 <li>
                   <Link to="/" className="text-gray-600 hover:text-pink-500">
@@ -98,7 +98,8 @@ const Footer = () => {
                 </li>
               </nav>
             </div>
-            <div className="lg:w-1/4 md:w-1/2 w-full px-4">
+
+            <div className="lg:w-1/5 md:w-1/2 w-full px-4">
               <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
                 GENERAL LINKS
               </h2>
@@ -144,6 +145,13 @@ const Footer = () => {
                     Site Map
                   </a>
                 </li>
+                <Link
+                  to="/signin"
+                  className="text-gray-600 hover:text-pink-500"
+                >
+                  {" "}
+                  SignIn
+                </Link>
               </nav>
             </div>
 
@@ -179,14 +187,19 @@ const Footer = () => {
                 <strong>Working Hours:</strong> 9am - 5pm
               </p>
             </div>
-            <div className="w-35 h-50 text-white p-2 rounded-full">
-              <a
-                href="https://gpt.karnataka.gov.in/kptmangalore/public/en"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <img src={img1} />
-              </a>
+            <div className="lg:w-1/5 md:w-1/2 w-full px-4 flex justify-center items-center">
+              <div className="w-40 h-50 flex items-center justify-center p-2 rounded-full hidden sm:flex">
+                <a
+                  href="https://gpt.karnataka.gov.in/kptmangalore/public/en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={img1}
+                    className="w-full h-auto max-w-[100px] mx-auto"
+                  />
+                </a>
+              </div>
             </div>
           </div>
         </div>

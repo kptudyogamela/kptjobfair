@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,6 +9,10 @@ const SignIn = () => {
 
   const fixedEmail = "kptudyogamela@gmail.com"; // Fixed email
   const correctPassword = "kpt103"; // Set your own password here
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

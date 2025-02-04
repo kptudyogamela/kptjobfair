@@ -1,4 +1,9 @@
+import { useEffect } from "react";
+
 const Contact = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   return (
     <div>
       <section className="text-gray-600 body-font relative">

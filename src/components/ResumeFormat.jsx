@@ -1,8 +1,12 @@
+import { useEffect } from "react";
 import { AiOutlineDownload } from "react-icons/ai";
 import { FaFileDownload } from "react-icons/fa";
 import { IoMdArrowRoundForward } from "react-icons/io";
 
 const ResumeFormat = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   return (
     <div>
       <section className="text-gray-600 body-font">

@@ -1,9 +1,12 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 function AfterSignInHome() {
   const navigate = useNavigate();
-
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   return (
     <div className="m-5 ">
       <div className="flex items-center gap-4">

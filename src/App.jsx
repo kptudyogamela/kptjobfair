@@ -16,7 +16,6 @@ import "./index.css";
 import Temp from "./components/Temp";
 import CompaniesList from "./components/CompaniesList";
 import AfterSignInHome from "./components/AfterSignInHome";
-import Feedback from "./components/Feedback";
 
 function App() {
   return (
@@ -44,7 +43,6 @@ function App() {
           <Route path="/after-signin-home" element={<AfterSignInHome />} />
           <Route path="/company-list" element={<CompaniesList />} />
           <Route path="/candidate-list" element={<CandidateList />} />
-          <Route path="/feedback" element={<Feedback />} />
         </Routes>
         <Footer />
       </BrowserRouter>
