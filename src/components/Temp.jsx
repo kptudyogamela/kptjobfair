@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 const Temp = () => {
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -9,7 +10,6 @@ const Temp = () => {
     collegeName: "",
     universityBoard: "",
     collegeLocation: "",
-
     fullName: "",
     gender: "",
     mobileNo: "",
@@ -22,11 +22,9 @@ const Temp = () => {
     permanentAddress: "",
     pinCode: "",
     familyIncome: "",
-
     sslcMode: "Regular",
     sslcYearOfPassing: "",
     sslcMarks: "",
-
     pucCourse: "",
     pucSpecialization: "",
     pucMode: "Regular",
@@ -41,25 +39,21 @@ const Temp = () => {
     diplomaMode: "Regular",
     diplomaYearOfPassing: "",
     diplomaMarks: "",
-
     degreeCourse: "",
     degreestream: "",
     degreeSpecialization: "",
     degreeMode: "Regular",
     degreeYearOfPassing: "",
     degreeMarks: "",
-
     postGradeCourse: "",
     postgradestream: "",
     postGradeSpecialization: "",
     postGradeMode: "Regular",
     postGradeYearOfPassing: "",
     postGradeMarks: "",
-
     otherTechnicalSkills: [],
     otherLanguages: [],
     otherIndustryAspiration: [],
-
     relocation: "No",
     relocationDetails: "",
     higherStudies: "No",
@@ -73,6 +67,14 @@ const Temp = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = (e) => {
     alert(step);
@@ -102,7 +104,7 @@ const Temp = () => {
   };
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       {loading && (
         <div className="absolute inset-0 bg-gray-100 bg-opacity-50 flex justify-center items-center z-10">
           {/* Spinner Animation */}
@@ -115,9 +117,10 @@ const Temp = () => {
         </div>
       )}
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
-        <div className="bg-white shadow-lg rounded-lg  w-[90vw]">
+        <div className="bg-white shadow-lg rounded-lg w-full max-w-7xl">
           <div className="container px-5 py-12 mx-auto flex flex-wrap flex-col">
             <div className="flex mx-auto flex-wrap mb-10">
+              {/* Navigation Buttons */}
               <button
                 className={`sm:px-6 py-3 w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t ${
                   step === 1
@@ -126,12 +129,8 @@ const Temp = () => {
                 }`}
                 onClick={() => setStep(1)}
               >
-                <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
-                  <path d="M13 3L4 14h7l-2 7 10-12h-7z"></path>
-                </svg>
                 New Registration
               </button>
-
               <button
                 className={`sm:px-6 py-3 w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t ${
                   step === 2
@@ -140,53 +139,36 @@ const Temp = () => {
                 }`}
                 onClick={() => setStep(2)}
               >
-                <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                </svg>
                 Personal Details
               </button>
-
               <button
-                className={`sm:px-6 py-3 w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider ${
+                className={`sm:px-6 py-3 w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t ${
                   step === 3
                     ? "border-pink-500 text-pink-500 bg-gray-100"
                     : "border-gray-200 text-gray-600"
                 }`}
                 onClick={() => setStep(3)}
               >
-                <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
-                </svg>
                 Academic Details
               </button>
-
               <button
-                className={`sm:px-6 py-3 w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider ${
+                className={`sm:px-6 py-3 w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t ${
                   step === 4
                     ? "border-pink-500 text-pink-500 bg-gray-100"
                     : "border-gray-200 text-gray-600"
                 }`}
                 onClick={() => setStep(4)}
               >
-                <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
-                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
                 Skills and Experience
               </button>
-
               <button
-                className={`sm:px-6 py-3 w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider ${
+                className={`sm:px-6 py-3 w-1/2 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium inline-flex items-center leading-none tracking-wider rounded-t ${
                   step === 5
                     ? "border-pink-500 text-pink-500 bg-gray-100"
                     : "border-gray-200 text-gray-600"
                 }`}
                 onClick={() => setStep(5)}
               >
-                <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
-                  <circle cx="12" cy="5" r="3"></circle>
-                  <path d="M12 22V8M5 12H2a10 10 0 0020 0h-3"></path>
-                </svg>
                 Other Details
               </button>
             </div>
@@ -206,30 +188,98 @@ const Temp = () => {
                   </h2>
                 </div>
               )}
-
               {step === 3 && (
-                <div>
+                <div className="relative max-w-7xl mx-auto p-6">
                   <h2 className="text-2xl text-center mb-4 mt-0 font-bold text-pink-600">
                     Academic Details
                   </h2>
+
+                  <div className="overflow-x-auto w-full">
+                    <table className="min-w-max w-full border-collapse border border-gray-300 text-sm sm:text-base">
+                      <thead className="bg-gray-100">
+                        <tr>
+                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
+                            Qualification
+                          </th>
+                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
+                            Course
+                          </th>
+                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
+                            Stream
+                          </th>
+                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
+                            Specialization
+                          </th>
+                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
+                            Mode of Education
+                          </th>
+                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
+                            Year of Passing
+                          </th>
+                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
+                            % of Marks
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="border border-gray-300">
+                          <td className="border border-gray-300 px-4 py-2 font-semibold text-gray-700">
+                            SSLC
+                          </td>
+                          <td className="border border-gray-300 px-4 py-2"></td>
+                          <td className="border border-gray-300 px-4 py-2"></td>
+                          <td className="border border-gray-300 px-4 py-2"></td>
+                          <td className="border border-gray-300 px-4 py-2">
+                            <select
+                              name="sslcMode"
+                              value={formData.sslcMode}
+                              onChange={handleChange}
+                              required
+                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                            >
+                              <option value="Regular">Regular</option>
+                              <option value="Distance">Distance</option>
+                            </select>
+                          </td>
+                          <td className="border border-gray-300 px-4 py-2">
+                            <select
+                              name="sslcYearOfPassing"
+                              value={formData.sslcYearOfPassing}
+                              onChange={handleChange}
+                              required
+                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                            >
+                              <option value="">Select Year</option>
+                              {Array.from(
+                                { length: 30 },
+                                (_, i) => new Date().getFullYear() - i
+                              ).map((year) => (
+                                <option key={year} value={year}>
+                                  {year}
+                                </option>
+                              ))}
+                            </select>
+                          </td>
+                          <td className="border border-gray-300 px-4 py-2">
+                            <input
+                              type="number"
+                              step="0.01"
+                              name="sslcMarks"
+                              value={formData.sslcMarks}
+                              onChange={handleChange}
+                              required
+                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                              placeholder="%"
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               )}
 
-              {step === 4 && (
-                <div>
-                  <h2 className="text-2xl text-center mb-4 mt-0 font-bold text-pink-600">
-                    Skills & Experience
-                  </h2>
-                </div>
-              )}
-
-              {step === 5 && (
-                <div>
-                  <h2 className="text-2xl text-center mb-4 mt-0 font-bold text-pink-600">
-                    Other Details
-                  </h2>
-                </div>
-              )}
+              {/* Add other steps here */}
 
               <div className="flex justify-between mt-4">
                 <button

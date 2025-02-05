@@ -30,18 +30,117 @@ const CompanyRegistration = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Regular expressions for validation
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const phoneRegex = /^[0-9]{10}$/; // For Indian phone numbers (10 digits)
+  const ctcRegex = /^[0-9]+$/; // For CTC, should be digits
+  const experienceRegex = /^[0-9]+$/; // Experience should be a number
+  const percentageRegex = /^[0-9]{1,2}(\.[0-9]{1,2})?$/; // For percentage (0 to 100, with up to two decimal places)
+
+  const validateForm = () => {
+    // Check if all required fields match the regular expressions
+    if (!formData.companyName) {
+      toast.error("Please fill your Company Name.");
+      return false;
+    }
+
+    if (!formData.contactPerson) {
+      toast.error("Please fill the Contact Person.");
+      return false;
+    }
+
+    if (!formData.email || !emailRegex.test(formData.email)) {
+      toast.error("Please enter a valid Email.");
+      return false;
+    }
+
+    if (!formData.phone || !phoneRegex.test(formData.phone)) {
+      toast.error("Please enter a valid Phone Number.");
+      return false;
+    }
+
+    if (!formData.industryType) {
+      toast.error("Please select Industry Type.");
+      return false;
+    }
+
+    if (formData.fromCTC && !ctcRegex.test(formData.fromCTC)) {
+      toast.error("From CTC should be a valid number.");
+      return false;
+    }
+
+    if (formData.toCTC && !ctcRegex.test(formData.toCTC)) {
+      toast.error("To CTC should be a valid number.");
+      return false;
+    }
+
+    if (
+      formData.fromExperience &&
+      !experienceRegex.test(formData.fromExperience)
+    ) {
+      toast.error("From Experience should be a valid number.");
+      return false;
+    }
+
+    if (formData.toExperience && !experienceRegex.test(formData.toExperience)) {
+      toast.error("To Experience should be a valid number.");
+      return false;
+    }
+
+    if (!formData.designation) {
+      toast.error("Please fill the Designation.");
+      return false;
+    }
+
+    if (!formData.qualification) {
+      toast.error("Please fill the Qualification.");
+      return false;
+    }
+
+    if (!formData.course) {
+      toast.error("Please fill the Courses Eligible.");
+      return false;
+    }
+
+    return true;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     window.scrollTo({ top: 4, behavior: "smooth" });
-    setLoading(true); // Show loading animation when submitting
+
+    if (!validateForm()) {
+      return;
+    }
+
+    setLoading(true);
 
     axios
       .post("https://kptjobfairbackend.onrender.com/api/companies", formData)
       .then((response) => {
         console.log("Response from backend:", response.data);
         toast.success("Company details submitted successfully!");
-        setLoading(false); // Stop loading animation
+        setLoading(false);
+        setFormData({
+          companyName: "",
+          contactPerson: "",
+          email: "",
+          phone: "",
+          industryType: "",
+          companyWebsite: "",
+          jobRoles: "",
+          companyAddress: "",
+          jobLocation: "",
+          fromCTC: "",
+          toCTC: "",
+          fromExperience: "",
+          toExperience: "",
+          designation: "",
+          qualification: "",
+          course: "",
+          stream: "",
+        });
       })
       .catch((error) => {
         console.error("Error submitting data:", error);
@@ -49,6 +148,7 @@ const CompanyRegistration = () => {
         setLoading(false); // Stop loading animation on error
       });
   };
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);

@@ -909,523 +909,529 @@ const CandidateRegistration = () => {
                     Academic Details
                   </h2>
 
-                  <div className="w-full overflow-scroll">
+                  <div className=" relative max-w-7xl mx-auto p-6">
                     {/* <div className="w-full overflow-x-auto"> */}
                     {/* <div className="max-w-full overflow-scroll"> */}
-                    <table className="min-w-full border-collapse border border-gray-300 text-sm sm:text-base">
-                      <thead className="bg-gray-100">
-                        <tr>
-                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
-                            Qualification
-                          </th>
-                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
-                            Course
-                          </th>
-                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
-                            Stream
-                          </th>
-                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
-                            Specialization
-                          </th>
-                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
-                            Mode of Education
-                          </th>
-                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
-                            Year of Passing
-                          </th>
-                          <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
-                            % of Marks
-                          </th>
-                        </tr>
-                      </thead>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full border-collapse border border-gray-300 text-sm sm:text-base">
+                        <thead className="bg-gray-100">
+                          <tr>
+                            <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
+                              Qualification
+                            </th>
+                            <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
+                              Course
+                            </th>
+                            <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
+                              Stream
+                            </th>
+                            <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
+                              Specialization
+                            </th>
+                            <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
+                              Mode of Education
+                            </th>
+                            <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
+                              Year of Passing
+                            </th>
+                            <th className="border border-gray-300 px-2 py-1 text-sm sm:px-4 sm:py-2">
+                              % of Marks
+                            </th>
+                          </tr>
+                        </thead>
 
-                      <tbody>
-                        {/* SSLC */}
-                        <tr className="border border-gray-300">
-                          <td className="border border-gray-300 px-4 py-2 font-semibold text-gray-700">
-                            SSLC
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2"></td>
-                          <td className="border border-gray-300 px-4 py-2"></td>
-                          <td className="border border-gray-300 px-4 py-2"></td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <select
-                              name="sslcMode"
-                              value={formData.sslcMode}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                            >
-                              <option value="Regular">Regular</option>
-                              <option value="Distance">Distance</option>
-                            </select>
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <select
-                              name="sslcYearOfPassing"
-                              value={formData.sslcYearOfPassing}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                            >
-                              <option value="">Select Year</option>
-                              {Array.from(
-                                { length: 30 },
-                                (_, i) => new Date().getFullYear() - i
-                              ).map((year) => (
-                                <option key={year} value={year}>
-                                  {year}
+                        <tbody>
+                          {/* SSLC */}
+                          <tr className="border border-gray-300 ">
+                            <td className="border border-gray-300 px-4 py-2 font-semibold text-gray-700">
+                              SSLC
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2"></td>
+                            <td className="border border-gray-300 px-1 py-2"></td>
+                            <td className="border border-gray-300 px-1 py-2"></td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <select
+                                name="sslcMode"
+                                value={formData.sslcMode}
+                                onChange={handleChange}
+                                required
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                              >
+                                <option value="Regular">Regular</option>
+                                <option value="Distance">Distance</option>
+                              </select>
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <select
+                                name="sslcYearOfPassing"
+                                value={formData.sslcYearOfPassing}
+                                onChange={handleChange}
+                                required
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                              >
+                                <option value="">Select Year</option>
+                                {Array.from(
+                                  { length: 30 },
+                                  (_, i) => new Date().getFullYear() - i
+                                ).map((year) => (
+                                  <option key={year} value={year}>
+                                    {year}
+                                  </option>
+                                ))}
+                              </select>
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <input
+                                type="number"
+                                step="0.01"
+                                name="sslcMarks"
+                                value={formData.sslcMarks}
+                                onChange={handleChange}
+                                required
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                placeholder="%"
+                              />
+                            </td>
+                          </tr>
+
+                          {/* PUC */}
+                          <tr className="border border-gray-300">
+                            <td className="border border-gray-300 px-4 py-2 font-semibold text-gray-700">
+                              PUC
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <select
+                                name="pucCourse"
+                                value={formData.pucCourse}
+                                onChange={handleChange}
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                              >
+                                <option className="text-wrap" value="">
+                                  -- Select Course --
                                 </option>
-                              ))}
-                            </select>
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <input
-                              type="number"
-                              step="0.01"
-                              name="sslcMarks"
-                              value={formData.sslcMarks}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                              placeholder="%"
-                            />
-                          </td>
-                        </tr>
+                                <option>Arts</option>
+                                <option>Commerce</option>
+                                <option>Science</option>
+                              </select>
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2"></td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <input
+                                type="text"
+                                name="pucSpecialization"
+                                value={formData.pucSpecialization}
+                                onChange={handleChange}
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                placeholder="Enter specialization"
+                              />
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <select
+                                name="pucMode"
+                                value={formData.pucMode}
+                                onChange={handleChange}
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                              >
+                                <option value="Regular">Regular</option>
+                                <option value="Distance">Distance</option>
+                              </select>
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <select
+                                name="pucYearOfPassing"
+                                value={formData.pucYearOfPassing}
+                                onChange={handleChange}
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                              >
+                                <option value="">Select Year</option>
+                                {Array.from(
+                                  { length: 30 },
+                                  (_, i) => new Date().getFullYear() - i
+                                ).map((year) => (
+                                  <option key={year} value={year}>
+                                    {year}
+                                  </option>
+                                ))}
+                              </select>
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <input
+                                type="number"
+                                step="0.01"
+                                name="pucMarks"
+                                value={formData.pucMarks}
+                                onChange={handleChange}
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                placeholder="%"
+                              />
+                            </td>
+                          </tr>
 
-                        {/* PUC */}
-                        <tr className="border border-gray-300">
-                          <td className="border border-gray-300 px-4 py-2 font-semibold text-gray-700">
-                            PUC
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <select
-                              name="pucCourse"
-                              value={formData.pucCourse}
-                              onChange={handleChange}
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                            >
-                              <option value="">-- Select Course --</option>
-                              <option>Arts</option>
-                              <option>Commerce</option>
-                              <option>Science</option>
-                            </select>
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2"></td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <input
-                              type="text"
-                              name="pucSpecialization"
-                              value={formData.pucSpecialization}
-                              onChange={handleChange}
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                              placeholder="Enter specialization"
-                            />
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <select
-                              name="pucMode"
-                              value={formData.pucMode}
-                              onChange={handleChange}
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                            >
-                              <option value="Regular">Regular</option>
-                              <option value="Distance">Distance</option>
-                            </select>
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <select
-                              name="pucYearOfPassing"
-                              value={formData.pucYearOfPassing}
-                              onChange={handleChange}
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                            >
-                              <option value="">Select Year</option>
-                              {Array.from(
-                                { length: 30 },
-                                (_, i) => new Date().getFullYear() - i
-                              ).map((year) => (
-                                <option key={year} value={year}>
-                                  {year}
+                          {/* ITI */}
+                          <tr className="border border-gray-300">
+                            <td className="border border-gray-300 px-4 py-2 font-semibold text-gray-700">
+                              ITI
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <input
+                                type="text"
+                                name="itiCourse"
+                                value={formData.itiCourse}
+                                onChange={handleChange}
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                placeholder="Enter Course"
+                              />
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2"></td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <input
+                                type="text"
+                                name="itiSpecialization"
+                                value={formData.itiSpecialization}
+                                onChange={handleChange}
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                placeholder="Enter specialization"
+                              />
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <select
+                                name="itiMode"
+                                value={formData.itiMode}
+                                onChange={handleChange}
+                                required
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                              >
+                                <option value="Regular">Regular</option>
+                                <option value="Distance">Distance</option>
+                              </select>
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <select
+                                name="itiYearOfPassing"
+                                value={formData.itiYearOfPassing}
+                                onChange={handleChange}
+                                required
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                              >
+                                <option value="">Select Year</option>
+                                {Array.from(
+                                  { length: 30 },
+                                  (_, i) => new Date().getFullYear() - i
+                                ).map((year) => (
+                                  <option key={year} value={year}>
+                                    {year}
+                                  </option>
+                                ))}
+                              </select>
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <input
+                                type="number"
+                                step="0.01"
+                                name="itiMarks"
+                                value={formData.itiMarks}
+                                onChange={handleChange}
+                                required
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                placeholder="%"
+                              />
+                            </td>
+                          </tr>
+
+                          {/* Diploma */}
+                          <tr className="border border-gray-300">
+                            <td className="border border-gray-300 px-4 py-2 font-semibold text-gray-700">
+                              Diploma
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <select
+                                name="diplomaCourse"
+                                value={formData.diplomaCourse}
+                                onChange={handleChange}
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                              >
+                                <option value="">-- Select Course --</option>
+
+                                <option value="Automobile Engineering">
+                                  Automobile Engineering
                                 </option>
-                              ))}
-                            </select>
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <input
-                              type="number"
-                              step="0.01"
-                              name="pucMarks"
-                              value={formData.pucMarks}
-                              onChange={handleChange}
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                              placeholder="%"
-                            />
-                          </td>
-                        </tr>
-
-                        {/* ITI */}
-                        <tr className="border border-gray-300">
-                          <td className="border border-gray-300 px-4 py-2 font-semibold text-gray-700">
-                            ITI
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <input
-                              type="text"
-                              name="itiCourse"
-                              value={formData.itiCourse}
-                              onChange={handleChange}
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                              placeholder="Enter Course"
-                            />
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2"></td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <input
-                              type="text"
-                              name="itiSpecialization"
-                              value={formData.itiSpecialization}
-                              onChange={handleChange}
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                              placeholder="Enter specialization"
-                            />
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <select
-                              name="itiMode"
-                              value={formData.itiMode}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                            >
-                              <option value="Regular">Regular</option>
-                              <option value="Distance">Distance</option>
-                            </select>
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <select
-                              name="itiYearOfPassing"
-                              value={formData.itiYearOfPassing}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                            >
-                              <option value="">Select Year</option>
-                              {Array.from(
-                                { length: 30 },
-                                (_, i) => new Date().getFullYear() - i
-                              ).map((year) => (
-                                <option key={year} value={year}>
-                                  {year}
+                                <option value="Instrumentation & Mechatronics">
+                                  Instrumentation & Mechatronics
                                 </option>
-                              ))}
-                            </select>
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <input
-                              type="number"
-                              step="0.01"
-                              name="itiMarks"
-                              value={formData.itiMarks}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                              placeholder="%"
-                            />
-                          </td>
-                        </tr>
-
-                        {/* Diploma */}
-                        <tr className="border border-gray-300">
-                          <td className="border border-gray-300 px-4 py-2 font-semibold text-gray-700">
-                            Diploma
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <select
-                              name="diplomaCourse"
-                              value={formData.diplomaCourse}
-                              onChange={handleChange}
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                            >
-                              <option value="">-- Select Course --</option>
-
-                              <option value="Automobile Engineering">
-                                Automobile Engineering
-                              </option>
-                              <option value="Instrumentation & Mechatronics">
-                                Instrumentation & Mechatronics
-                              </option>
-                              <option value="Chemical Engineering">
-                                Chemical Engineering
-                              </option>
-                              <option value="Mechanical Engineering">
-                                Mechanical Engineering
-                              </option>
-                              <option value="Civil Engineering">
-                                Civil Engineering
-                              </option>
-                              <option value="Electrical Engineering">
-                                Electrical Engineering
-                              </option>
-                              <option value="Computer Science">
-                                Computer Science and Engineering
-                              </option>
-                              <option value="Electronics and Communication">
-                                Electronics and Communication
-                              </option>
-                              <option value="Polymer Technology">
-                                Polymer Technology
-                              </option>
-                              <option value="Others">Others</option>
-                            </select>
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2"></td>
-                          <td className="border border-gray-300 px-4 py-2"></td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <select
-                              name="diplomaMode"
-                              value={formData.diplomaMode}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                            >
-                              <option value="Regular">Regular</option>
-                              <option value="Distance">Distance</option>
-                            </select>
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <select
-                              name="diplomaYearOfPassing"
-                              value={formData.diplomaYearOfPassing}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                            >
-                              <option value="">Select Year</option>
-                              {Array.from(
-                                { length: 30 },
-                                (_, i) => new Date().getFullYear() - i
-                              ).map((year) => (
-                                <option key={year} value={year}>
-                                  {year}
+                                <option value="Chemical Engineering">
+                                  Chemical Engineering
                                 </option>
-                              ))}
-                            </select>
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <input
-                              type="number"
-                              step="0.01"
-                              name="diplomaMarks"
-                              value={formData.diplomaMarks}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                              placeholder="%"
-                            />
-                          </td>
-                        </tr>
-                        {/* Degree */}
-                        <tr className="border border-gray-300">
-                          <td className="border border-gray-300 px-4 py-2 font-semibold text-gray-700">
-                            Degree
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <select
-                              name="degreeCourse"
-                              value={formData.degreeCourse}
-                              onChange={handleChange}
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                            >
-                              <option value="">-- Select Course --</option>
-                              <option value="ANM">ANM</option>
-                              <option value="B.A">B.A</option>
-                              <option value="B.B.M">B.B.M</option>
-                              <option value="B.Com">B.Com</option>
-                              <option value="B.Ed">B.Ed</option>
-                              <option value="B.E/B.Tech">B.E/B.Tech</option>
-                              <option value="B.H.M.S">B.H.M.S</option>
-                              <option value="B.H.R.D">B.H.R.D</option>
-                              <option value="B.Pharm">B.Pharm</option>
-                              <option value="B.Sc">B.Sc</option>
-                              <option value="BAMS">BAMS</option>
-                              <option value="BBA">BBA</option>
-                              <option value="BCA">BCA</option>
-                              <option value="BDS">BDS</option>
-                              <option value="BHM">BHM</option>
-                              <option value="BHS">BHS</option>
-                              <option value="BNYS">BNYS</option>
-                              <option value="BPT">BPT</option>
-                              <option value="BSW">BSW</option>
-                              <option value="BVA">BVA</option>
-                              <option value="EEG">EEG</option>
-                              <option value="GNM">GNM</option>
-                              <option value="LLB">LLB</option>
-                              <option value="MBBS">MBBS</option>
-                              <option value="Microbiology">Microbiology</option>
-                            </select>
-                          </td>
-
-                          <td className="border border-gray-300 px-4 py-2">
-                            <input
-                              type="text"
-                              name="degreestream"
-                              value={formData.degreestream}
-                              onChange={handleChange}
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                              placeholder="Enter stream"
-                            />
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <input
-                              type="text"
-                              name="degreeSpecialization"
-                              value={formData.degreeSpecialization}
-                              onChange={handleChange}
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                              placeholder="Enter specialization"
-                            />
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <select
-                              name="degreeMode"
-                              value={formData.degreeMode}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                            >
-                              <option value="Regular">Regular</option>
-                              <option value="Distance">Distance</option>
-                            </select>
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <select
-                              name="degreeYearOfPassing"
-                              value={formData.degreeYearOfPassing}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                            >
-                              <option value="">Select Year</option>
-                              {Array.from(
-                                { length: 30 },
-                                (_, i) => new Date().getFullYear() - i
-                              ).map((year) => (
-                                <option key={year} value={year}>
-                                  {year}
+                                <option value="Mechanical Engineering">
+                                  Mechanical Engineering
                                 </option>
-                              ))}
-                            </select>
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <input
-                              type="number"
-                              step="0.01"
-                              name="degreeMarks"
-                              value={formData.degreeMarks}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                              placeholder="%"
-                            />
-                          </td>
-                        </tr>
-
-                        {/* PstDegree */}
-                        <tr className="border border-gray-300">
-                          <td className="border border-gray-300 px-4 py-2 font-semibold text-gray-700">
-                            Post Graduation
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <select
-                              name="postGradeCourse"
-                              value={formData.postGradeCourse}
-                              onChange={handleChange}
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                            >
-                              <option value="">-- Select Course --</option>
-                              <option value="M.A">M.A</option>
-                              <option value="M.Com">M.Com</option>
-                              <option value="M.Sc">M.Sc</option>
-                              <option value="MBA">MBA</option>
-                              <option value="MCA">MCA</option>
-                              <option value="M.Tech">M.Tech</option>
-                              <option value="M.Pharm">M.Pharm</option>
-                              <option value="M.Ed">M.Ed</option>
-                              <option value="M.S">M.S</option>
-                              <option value="MD">MD</option>
-                              <option value="MDS">MDS</option>
-                              <option value="M.Phil">M.Phil</option>
-                              <option value="LLM">LLM</option>
-                              <option value="Ph.D">Ph.D</option>
-                            </select>
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <input
-                              type="text"
-                              name="postgradestream"
-                              value={formData.postgradestream}
-                              onChange={handleChange}
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                              placeholder="Enter stream"
-                            />
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <input
-                              type="text"
-                              name="postGradeSpecialization"
-                              value={formData.postGradeSpecialization}
-                              onChange={handleChange}
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                              placeholder="Enter specialization"
-                            />
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <select
-                              name="postGradeMode"
-                              value={formData.postGradeMode}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                            >
-                              <option value="Regular">Regular</option>
-                              <option value="Distance">Distance</option>
-                            </select>
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <select
-                              name="postGradeYearOfPassing"
-                              value={formData.postGradeYearOfPassing}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                            >
-                              <option value="">Select Year</option>
-                              {Array.from(
-                                { length: 30 },
-                                (_, i) => new Date().getFullYear() - i
-                              ).map((year) => (
-                                <option key={year} value={year}>
-                                  {year}
+                                <option value="Civil Engineering">
+                                  Civil Engineering
                                 </option>
-                              ))}
-                            </select>
-                          </td>
-                          <td className="border border-gray-300 px-4 py-2">
-                            <input
-                              type="number"
-                              step="0.01"
-                              name="postGradeMarks"
-                              value={formData.postGradeMarks}
-                              onChange={handleChange}
-                              required
-                              className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
-                              placeholder="%"
-                            />
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
+                                <option value="Electrical Engineering">
+                                  Electrical Engineering
+                                </option>
+                                <option value="Computer Science">
+                                  Computer Science and Engineering
+                                </option>
+                                <option value="Electronics and Communication">
+                                  Electronics and Communication
+                                </option>
+                                <option value="Polymer Technology">
+                                  Polymer Technology
+                                </option>
+                                <option value="Others">Others</option>
+                              </select>
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2"></td>
+                            <td className="border border-gray-300 px-1 py-2"></td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <select
+                                name="diplomaMode"
+                                value={formData.diplomaMode}
+                                onChange={handleChange}
+                                required
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                              >
+                                <option value="Regular">Regular</option>
+                                <option value="Distance">Distance</option>
+                              </select>
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <select
+                                name="diplomaYearOfPassing"
+                                value={formData.diplomaYearOfPassing}
+                                onChange={handleChange}
+                                required
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                              >
+                                <option value="">Select Year</option>
+                                {Array.from(
+                                  { length: 30 },
+                                  (_, i) => new Date().getFullYear() - i
+                                ).map((year) => (
+                                  <option key={year} value={year}>
+                                    {year}
+                                  </option>
+                                ))}
+                              </select>
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <input
+                                type="number"
+                                step="0.01"
+                                name="diplomaMarks"
+                                value={formData.diplomaMarks}
+                                onChange={handleChange}
+                                required
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                placeholder="%"
+                              />
+                            </td>
+                          </tr>
+                          {/* Degree */}
+                          <tr className="border border-gray-300">
+                            <td className="border border-gray-300 px-4 py-2 font-semibold text-gray-700">
+                              Degree
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <select
+                                name="degreeCourse"
+                                value={formData.degreeCourse}
+                                onChange={handleChange}
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                              >
+                                <option value="">-- Select Course --</option>
+                                <option value="ANM">ANM</option>
+                                <option value="B.A">B.A</option>
+                                <option value="B.B.M">B.B.M</option>
+                                <option value="B.Com">B.Com</option>
+                                <option value="B.Ed">B.Ed</option>
+                                <option value="B.E/B.Tech">B.E/B.Tech</option>
+                                <option value="B.H.M.S">B.H.M.S</option>
+                                <option value="B.H.R.D">B.H.R.D</option>
+                                <option value="B.Pharm">B.Pharm</option>
+                                <option value="B.Sc">B.Sc</option>
+                                <option value="BAMS">BAMS</option>
+                                <option value="BBA">BBA</option>
+                                <option value="BCA">BCA</option>
+                                <option value="BDS">BDS</option>
+                                <option value="BHM">BHM</option>
+                                <option value="BHS">BHS</option>
+                                <option value="BNYS">BNYS</option>
+                                <option value="BPT">BPT</option>
+                                <option value="BSW">BSW</option>
+                                <option value="BVA">BVA</option>
+                                <option value="EEG">EEG</option>
+                                <option value="GNM">GNM</option>
+                                <option value="LLB">LLB</option>
+                                <option value="MBBS">MBBS</option>
+                                <option value="Microbiology">
+                                  Microbiology
+                                </option>
+                              </select>
+                            </td>
+
+                            <td className="border border-gray-300 px-1 py-2">
+                              <input
+                                type="text"
+                                name="degreestream"
+                                value={formData.degreestream}
+                                onChange={handleChange}
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                placeholder="Enter stream"
+                              />
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <input
+                                type="text"
+                                name="degreeSpecialization"
+                                value={formData.degreeSpecialization}
+                                onChange={handleChange}
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                placeholder="Enter specialization"
+                              />
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <select
+                                name="degreeMode"
+                                value={formData.degreeMode}
+                                onChange={handleChange}
+                                required
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                              >
+                                <option value="Regular">Regular</option>
+                                <option value="Distance">Distance</option>
+                              </select>
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <select
+                                name="degreeYearOfPassing"
+                                value={formData.degreeYearOfPassing}
+                                onChange={handleChange}
+                                required
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                              >
+                                <option value="">Select Year</option>
+                                {Array.from(
+                                  { length: 30 },
+                                  (_, i) => new Date().getFullYear() - i
+                                ).map((year) => (
+                                  <option key={year} value={year}>
+                                    {year}
+                                  </option>
+                                ))}
+                              </select>
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <input
+                                type="number"
+                                step="0.01"
+                                name="degreeMarks"
+                                value={formData.degreeMarks}
+                                onChange={handleChange}
+                                required
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                placeholder="%"
+                              />
+                            </td>
+                          </tr>
+
+                          {/* PstDegree */}
+                          <tr className="border border-gray-300">
+                            <td className="border border-gray-300 px-4 py-2 font-semibold text-gray-700">
+                              Post Graduation
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <select
+                                name="postGradeCourse"
+                                value={formData.postGradeCourse}
+                                onChange={handleChange}
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                              >
+                                <option value="">-- Select Course --</option>
+                                <option value="M.A">M.A</option>
+                                <option value="M.Com">M.Com</option>
+                                <option value="M.Sc">M.Sc</option>
+                                <option value="MBA">MBA</option>
+                                <option value="MCA">MCA</option>
+                                <option value="M.Tech">M.Tech</option>
+                                <option value="M.Pharm">M.Pharm</option>
+                                <option value="M.Ed">M.Ed</option>
+                                <option value="M.S">M.S</option>
+                                <option value="MD">MD</option>
+                                <option value="MDS">MDS</option>
+                                <option value="M.Phil">M.Phil</option>
+                                <option value="LLM">LLM</option>
+                                <option value="Ph.D">Ph.D</option>
+                              </select>
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <input
+                                type="text"
+                                name="postgradestream"
+                                value={formData.postgradestream}
+                                onChange={handleChange}
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                placeholder="Enter stream"
+                              />
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <input
+                                type="text"
+                                name="postGradeSpecialization"
+                                value={formData.postGradeSpecialization}
+                                onChange={handleChange}
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                placeholder="Enter specialization"
+                              />
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <select
+                                name="postGradeMode"
+                                value={formData.postGradeMode}
+                                onChange={handleChange}
+                                required
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                              >
+                                <option value="Regular">Regular</option>
+                                <option value="Distance">Distance</option>
+                              </select>
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <select
+                                name="postGradeYearOfPassing"
+                                value={formData.postGradeYearOfPassing}
+                                onChange={handleChange}
+                                required
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                              >
+                                <option value="">Select Year</option>
+                                {Array.from(
+                                  { length: 30 },
+                                  (_, i) => new Date().getFullYear() - i
+                                ).map((year) => (
+                                  <option key={year} value={year}>
+                                    {year}
+                                  </option>
+                                ))}
+                              </select>
+                            </td>
+                            <td className="border border-gray-300 px-1 py-2">
+                              <input
+                                type="number"
+                                step="0.01"
+                                name="postGradeMarks"
+                                value={formData.postGradeMarks}
+                                onChange={handleChange}
+                                required
+                                className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
+                                placeholder="%"
+                              />
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               )}
