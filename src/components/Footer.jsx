@@ -170,17 +170,20 @@ const Footer = () => {
               </p>
               <p className="mt-2 text-gray-700">
                 <strong>Email:</strong>{" "}
-                <a href="mailto:ceo@jobfairindia.in" className="text-pink-600">
+                <a
+                  href="mailto:kptudyogamela@gmail.com"
+                  className="text-pink-600"
+                >
                   kptudyogamela@gmail.com
                 </a>{" "}
                 <br />
                 <strong>Website:</strong>{" "}
                 <a
-                  href="https://www.jobfairindia.com"
+                  href="https://gpt.karnataka.gov.in/kptmangalore/public/en"
                   target="_blank"
                   className="text-pink-600"
                 >
-                  www.kptjobfair.com
+                  www.kptmangalore.com
                 </a>
               </p>
               <p className="mt-2 text-gray-700">

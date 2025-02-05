@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CompanyRegistration = () => {
   const [formData, setFormData] = useState({
@@ -31,19 +33,19 @@ const CompanyRegistration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 4, behavior: "smooth" });
     setLoading(true); // Show loading animation when submitting
 
     axios
       .post("https://kptjobfairbackend.onrender.com/api/companies", formData)
       .then((response) => {
         console.log("Response from backend:", response.data);
-        alert("Job details submitted successfully!");
+        toast.success("Company details submitted successfully!");
         setLoading(false); // Stop loading animation
       })
       .catch((error) => {
         console.error("Error submitting data:", error);
-        alert("Failed to submit job details.");
+        toast.error("Failed to submit Company details.");
         setLoading(false); // Stop loading animation on error
       });
   };
@@ -52,9 +54,9 @@ const CompanyRegistration = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="relative flex items-center justify-center min-h-screen bg-gray-100">
       {loading && (
-        <div className="absolute inset-0 bg-gray-100 bg-opacity-50 flex justify-center items-center z-10">
+        <div className="absolute inset-0 h-50 bg-gray-100 bg-opacity-50 flex justify-center items-center z-10">
           {/* Spinner Animation */}
           <div className="flex flex-col justify-center items-center">
             <div className="animate-spin rounded-full h-24 w-24 border-t-4 border-pink-500 border-solid mb-4"></div>
@@ -339,6 +341,7 @@ const CompanyRegistration = () => {
           </div>
         </form>
       </div>
+      <ToastContainer position="top-center" />
     </div>
   );
 };

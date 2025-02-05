@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const CandidateRegistration = () => {
   const [step, setStep] = useState(1);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     collegeName: "",
     universityBoard: "",
@@ -78,92 +79,309 @@ const CandidateRegistration = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
-      .post("https://kptjobfairbackend.onrender.com/api/candidates", formData)
-      .then((response) => {
-        console.log("Response from backend:", response.data);
-        alert("Candidate details submitted successfully!");
-      })
-      .catch((error) => {
-        console.error("Error submitting data:", error);
-        alert("Failed to submit Candidate details.");
-      });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (
+      validateStep(1) &&
+      validateStep(2) &&
+      validateStep(3) &&
+      validateStep(5)
+    ) {
+      setLoading(true);
+      axios
+        .post("https://kptjobfairbackend.onrender.com/api/candidates", formData)
+        .then((response) => {
+          console.log("Response from backend:", response.data);
+          toast.success("Candidate details submitted successfully!");
+          setFormData({
+            collegeName: "",
+            universityBoard: "",
+            collegeLocation: "",
+
+            fullName: "",
+            gender: "",
+            mobileNo: "",
+            alternateMobileNo: "",
+            state: "",
+            district: "",
+            email: "",
+            hometown: "",
+            dateOfBirth: "",
+            permanentAddress: "",
+            pinCode: "",
+            familyIncome: "",
+
+            sslcMode: "Regular",
+            sslcYearOfPassing: "",
+            sslcMarks: "",
+
+            pucCourse: "",
+            pucSpecialization: "",
+            pucMode: "Regular",
+            pucYearOfPassing: "",
+            pucMarks: "",
+            itiCourse: "",
+            itiSpecialization: "",
+            itiMode: "Regular",
+            itiYearOfPassing: "",
+            itiMarks: "",
+            diplomaCourse: "",
+            diplomaMode: "Regular",
+            diplomaYearOfPassing: "",
+            diplomaMarks: "",
+
+            degreeCourse: "",
+            degreestream: "",
+            degreeSpecialization: "",
+            degreeMode: "Regular",
+            degreeYearOfPassing: "",
+            degreeMarks: "",
+
+            postGradeCourse: "",
+            postgradestream: "",
+            postGradeSpecialization: "",
+            postGradeMode: "Regular",
+            postGradeYearOfPassing: "",
+            postGradeMarks: "",
+
+            otherTechnicalSkills: [],
+            otherLanguages: [],
+            otherIndustryAspiration: [],
+
+            relocation: "No",
+            relocationDetails: "",
+            higherStudies: "No",
+            experience: "No",
+            experienceyears: "",
+            shiftWork: "No",
+            passport: "No",
+            drivingLicense: "No",
+          });
+
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error submitting data:", error);
+          toast.error("Failed to submit Candidate details.");
+          setLoading(false);
+        });
+    }
   };
 
   const validateStep = (currentStep) => {
+    const mobileRegex = /^[6-9]\d{9}$/;
+    const pinCodeRegex = /^[1-9][0-9]{5}$/;
+    const incomeRegex = /^\d+$/;
+    const percentageRegex = /^(100(\.0{1,2})?|[0-9]{1,2}(\.[0-9]{1,2})?)$/;
+
     switch (currentStep) {
       case 1:
-        if (
-          !formData.collegeName ||
-          !formData.universityBoard ||
-          !formData.collegeLocation
-        ) {
-          toast.error("Please fill all required fields.");
+        if (!formData.collegeName) {
+          toast.error("Please fill your College Name.");
+          return false;
+        }
+        if (!formData.universityBoard) {
+          toast.error("Please fill your University/Board.");
+          return false;
+        }
+        if (!formData.collegeLocation) {
+          toast.error("Please fill your College Location.");
           return false;
         }
         break;
+
       case 2:
-        if (
-          !formData.fullName ||
-          !formData.gender ||
-          !formData.mobileNo ||
-          !formData.state ||
-          !formData.district ||
-          !formData.email ||
-          !formData.dateOfBirth ||
-          !formData.permanentAddress ||
-          !formData.pinCode
-        ) {
-          toast.error("Please fill all required fields in Personal Details.");
+        if (!formData.fullName) {
+          toast.error("Please fill your Full Name.");
+          return false;
+        }
+        if (!formData.gender) {
+          toast.error("Please select your Gender.");
+          return false;
+        }
+        if (!formData.mobileNo) {
+          toast.error("Please fill your Mobile Number.");
+          return false;
+        }
+        if (!mobileRegex.test(formData.mobileNo)) {
+          toast.error("Please enter a valid 10-digit Mobile Number.");
+          return false;
+        }
+        if (!formData.state) {
+          toast.error("Please select your State.");
+          return false;
+        }
+        if (!formData.district) {
+          toast.error("Please select your District.");
+          return false;
+        }
+        if (!formData.email) {
+          toast.error("Please fill your Email.");
+          return false;
+        }
+        if (!formData.dateOfBirth) {
+          toast.error("Please fill your Date of Birth.");
+          return false;
+        }
+        if (!formData.permanentAddress) {
+          toast.error("Please fill your Permanent Address.");
+          return false;
+        }
+        if (!formData.pinCode) {
+          toast.error("Please fill your Pin Code.");
+          return false;
+        }
+        if (!pinCodeRegex.test(formData.pinCode)) {
+          toast.error("Please enter a valid 6-digit Indian Pin Code.");
+          return false;
+        }
+        if (!formData.familyIncome) {
+          toast.error("Please fill your Family Income.");
+          return false;
+        }
+        if (!incomeRegex.test(formData.familyIncome)) {
+          toast.error("Family Income should be a valid number.");
           return false;
         }
         break;
+
       case 3:
-        if (
-          !formData.sslcYearOfPassing ||
-          !formData.sslcMarks ||
-          (formData.pucCourse &&
-            formData.itiCourse &&
-            formData.diplomaCourse) ||
-          (formData.pucCourse &&
-            (!formData.pucYearOfPassing || !formData.pucMarks)) ||
-          (formData.itiCourse &&
-            (!formData.itiYearOfPassing || !formData.itiMarks)) ||
-          (formData.diplomaCourse &&
-            (!formData.diplomaYearOfPassing || !formData.diplomaMarks)) ||
-          (formData.degreeCourse &&
-            (!formData.degreeYearOfPassing || !formData.degreeMarks)) ||
-          (formData.postGradeCourse &&
-            (!formData.postGradeYearOfPassing || !formData.postGradeMarks))
-        ) {
-          toast.error("Please fill all required fields in Academic Details.");
+        if (!formData.sslcYearOfPassing) {
+          toast.error("Please fill your SSLC Year of Passing.");
           return false;
         }
+        if (!formData.sslcMarks) {
+          toast.error("Please fill your SSLC Marks.");
+          return false;
+        }
+        if (!percentageRegex.test(formData.sslcMarks)) {
+          toast.error("Please enter a valid SSLC percentage (0 to 100).");
+          return false;
+        }
+        if (
+          formData.pucCourse &&
+          (!formData.pucYearOfPassing || !formData.pucMarks)
+        ) {
+          toast.error("Please fill your PUC Year of Passing and Marks.");
+          return false;
+        }
+
+        if (formData.pucCourse && !percentageRegex.test(formData.pucMarks)) {
+          toast.error("Please enter a valid PUC percentage (0 to 100).");
+          return false;
+        }
+
+        if (
+          formData.itiCourse &&
+          (!formData.itiYearOfPassing || !formData.itiMarks)
+        ) {
+          toast.error("Please fill your ITI Year of Passing and Marks.");
+          return false;
+        }
+
+        if (formData.itiCourse && !percentageRegex.test(formData.itiMarks)) {
+          toast.error("Please enter a valid ITI percentage (0 to 100).");
+          return false;
+        }
+
+        if (
+          formData.diplomaCourse &&
+          (!formData.diplomaYearOfPassing || !formData.diplomaMarks)
+        ) {
+          toast.error("Please fill your Diploma Year of Passing and Marks.");
+          return false;
+        }
+
+        if (
+          formData.diplomaCourse &&
+          !percentageRegex.test(formData.diplomaMarks)
+        ) {
+          toast.error("Please enter a valid diploma percentage (0 to 100).");
+          return false;
+        }
+
+        if (
+          formData.degreeCourse &&
+          (!formData.degreeYearOfPassing || !formData.degreeMarks)
+        ) {
+          toast.error("Please fill your Degree Year of Passing and Marks.");
+          return false;
+        }
+
+        if (
+          formData.degreeCourse &&
+          !percentageRegex.test(formData.degreeMarks)
+        ) {
+          toast.error("Please enter a valid percentage (0 to 100).");
+          return false;
+        }
+
+        if (
+          formData.postGradeCourse &&
+          (!formData.postGradeYearOfPassing || !formData.postGradeMarks)
+        ) {
+          toast.error(
+            "Please fill your Postgraduate Year of Passing and Marks."
+          );
+          return false;
+        }
+
+        if (
+          formData.postGradeCourse &&
+          !percentageRegex.test(formData.postGradeMarks)
+        ) {
+          toast.error("Please enter a valid percentage (0 to 100).");
+          return false;
+        }
+
         break;
+
       case 5:
-        if (
-          !formData.relocation ||
-          (formData.relocation === "Yes" && !formData.relocationDetails) ||
-          !formData.higherStudies ||
-          !formData.experience ||
-          (formData.experience === "Yes" && !formData.experienceyears) ||
-          !formData.shiftWork ||
-          !formData.passport ||
-          !formData.drivingLicense
-        ) {
-          toast.error("Please fill all required fields in Other Details.");
+        if (!formData.relocation) {
+          toast.error("Please specify if you are open to relocation.");
+          return false;
+        }
+        if (formData.relocation === "Yes" && !formData.relocationDetails) {
+          toast.error(
+            "Please provide details about your relocation preferences."
+          );
+          return false;
+        }
+        if (!formData.higherStudies) {
+          toast.error("Please specify your higher studies plan.");
+          return false;
+        }
+        if (!formData.experience) {
+          toast.error("Please specify your work experience.");
+          return false;
+        }
+        if (formData.experience === "Yes" && !formData.experienceyears) {
+          toast.error("Please fill your years of experience.");
+          return false;
+        }
+        if (!formData.shiftWork) {
+          toast.error("Please specify if you are open to shift work.");
+          return false;
+        }
+        if (!formData.passport) {
+          toast.error("Please specify if you have a passport.");
+          return false;
+        }
+        if (!formData.drivingLicense) {
+          toast.error("Please specify if you have a driving license.");
           return false;
         }
         break;
+
       default:
         break;
     }
+
     return true;
   };
 
   const nextStep = () => {
-    if (step < 6) {
-      if (validateStep(step)) {
+    if (validateStep(step)) {
+      if (step < 6) {
         setStep(step + 1);
       }
     }
@@ -174,7 +392,19 @@ const CandidateRegistration = () => {
   };
 
   return (
-    <div>
+    <div className="relative">
+      {loading && (
+        <div className="absolute inset-0 h-50 bg-gray-100 bg-opacity-50 flex justify-center items-center z-10 p-5">
+          {/* Spinner Animation */}
+          <div className="flex flex-col justify-center items-center">
+            <div className="animate-spin rounded-full h-24 w-24 border-t-4 border-pink-500 border-solid mb-4"></div>
+            <div className="text-black text-2xl font-semibold">
+              Please wait, data is being fetched from the server...
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="flex items-center justify-center min-h-screen bg-gray-100">
         <div className="bg-white shadow-lg rounded-lg  w-[90vw]">
           <div className="container px-5 py-12 mx-auto flex flex-wrap flex-col">
@@ -256,7 +486,7 @@ const CandidateRegistration = () => {
               {step === 1 && (
                 <div>
                   <h2 className="text-2xl text-center mb-4 mt-0 font-bold text-pink-600">
-                    Registration Details
+                    New Registration
                   </h2>
 
                   {/* College/Institute Name */}
@@ -282,7 +512,7 @@ const CandidateRegistration = () => {
                       University/Board<span className="text-red-500">*</span>
                     </label>
                     <select
-                      name="gender"
+                      name="universityBoard"
                       value={formData.universityBoard}
                       onChange={handleChange}
                       required
@@ -404,7 +634,7 @@ const CandidateRegistration = () => {
                       </option>
                       <option value="Visvesvaraya Technological University (VTU)">
                         Visvesvaraya Technological University (VTU)
-                      </option>{" "}
+                      </option>
                       <option value="Others">Others</option>
                     </select>
                   </div>
@@ -797,7 +1027,6 @@ const CandidateRegistration = () => {
                               name="pucMode"
                               value={formData.pucMode}
                               onChange={handleChange}
-                              required
                               className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
                             >
                               <option value="Regular">Regular</option>
@@ -809,7 +1038,6 @@ const CandidateRegistration = () => {
                               name="pucYearOfPassing"
                               value={formData.pucYearOfPassing}
                               onChange={handleChange}
-                              required
                               className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
                             >
                               <option value="">Select Year</option>
@@ -830,7 +1058,6 @@ const CandidateRegistration = () => {
                               name="pucMarks"
                               value={formData.pucMarks}
                               onChange={handleChange}
-                              required
                               className="w-full px-2 py-1 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
                               placeholder="%"
                             />
@@ -1512,7 +1739,7 @@ const CandidateRegistration = () => {
                 >
                   Previous
                 </button>
-                {step < 5 ? (
+                {step < 5 && (
                   <button
                     type="button"
                     className="py-2 px-4 bg-pink-500 text-white rounded-md"
@@ -1520,20 +1747,21 @@ const CandidateRegistration = () => {
                   >
                     Next
                   </button>
-                ) : (
+                )}
+                {step === 5 && (
                   <button
                     type="submit"
                     className="py-2 px-4 bg-green-500 text-white rounded-md"
                   >
-                    Submit
+                    {loading ? "Submitting..." : "Submit"}
                   </button>
                 )}
               </div>
             </form>
           </div>
         </div>
+        <ToastContainer position="top-center" />
       </div>
-      <ToastContainer />
     </div>
   );
 };

@@ -43,6 +43,7 @@ function App() {
           <Route path="/after-signin-home" element={<AfterSignInHome />} />
           <Route path="/company-list" element={<CompaniesList />} />
           <Route path="/candidate-list" element={<CandidateList />} />
+          <Route path="/temp" element={<Temp />} />
         </Routes>
         <Footer />
       </BrowserRouter>
