@@ -266,6 +266,7 @@ const CompanyRegistration = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
                 placeholder="From Experience"
+                min="0"
               />
             </div>
             <div className="w-full">

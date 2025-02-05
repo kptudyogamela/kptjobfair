@@ -1658,13 +1658,14 @@ const CandidateRegistration = () => {
                         Experience years<span className="text-red-500">*</span>
                       </label>
                       <input
-                        type="text"
+                        type="number"
                         name="experienceyears"
                         value={formData.experienceyears}
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-pink-400"
                         placeholder="Enter number of years of experience"
+                        min="0"
                       />
                     </div>
                   )}
