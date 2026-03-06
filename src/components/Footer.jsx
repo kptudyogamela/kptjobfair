@@ -213,10 +213,10 @@ const Footer = () => {
               <a
                 className="ml-3 text-gray-500 hover:text-pink-500 transition-colors duration-300 cursor-pointer
                 href="
-                https:rel="noopener noreferrer"
+                href="https://swasyaha.in"
                 target="_blank"
               >
-                @KPT Incubation Center
+               Developed by Swasyaha Solutions
               </a>
             </p>
             <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
